@@ -1,0 +1,12 @@
+.center-wrap{
+	position: relative;
+}
+.center-content{
+	width: 50%;
+	height: 50%;
+	position: absolute;
+	margin: auto;
+	background-color: #fff;
+	top: 0;left:0;bottom: 0;right: 0;
+	overflow: auto;
+}
