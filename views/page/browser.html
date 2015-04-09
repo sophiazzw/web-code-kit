@@ -6,21 +6,27 @@
 	<link rel="stylesheet" href="../../static/css/solarized_light.css">
 	<link rel="stylesheet" href="../../static/css/center.css">
 	<link rel="stylesheet" href="../../static/css/reset.css">
+	<link rel="stylesheet" href="../../static/css/browser.css">
 </head>
 <body>
 	<!-- <p data-height="268" data-theme-id="0" data-slug-hash="ragYvB" data-default-tab="result" data-user="bookcasey" class='codepen'>See the Pen <a href='http://codepen.io/bookcasey/pen/ragYvB/'>ragYvB</a> by bookcasey (<a href='http://codepen.io/bookcasey'>@bookcasey</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 	<p data-height="522" data-theme-id="0" data-slug-hash="GgaOQM" data-default-tab="result" data-user="valdean" class='codepen'>See the Pen <a href='http://codepen.io/valdean/pen/GgaOQM/'>Bouncy Text</a> by Val Klump (<a href='http://codepen.io/valdean'>@valdean</a>) on <a href='http://codepen.io'>CodePen</a>.</p> -->
-	
+	<style>
+	.browser-support{
+		width: 600px;
+	}
+	</style>
 	<div class="center-wrap">
 		<div class="center-content">
 			lalala
 		</div>
 	</div>
 	<pre><code class="css">.center-wrap{&#10;  position: relative;&#10;}&#10;.center-content{&#10;  width: 50%;&#10;  height: 50%;&#10;  position: absolute;&#10;  margin: auto;&#10;  background-color: #fff;&#10;  top: 0;left:0;bottom: 0;right: 0;&#10;  overflow: auto;&#10;}</code></pre>
-
+	<br>
 	<div class="browser-support">
-		<table>
-			<tr>
+		<table class="browser-table">
+			<tr class="thead">
+				<th>Property</th>
 				<th class="bsChrome"></th>
 				<th class="bsIE"></th>
 				<th class="bsFirefox"></th>
@@ -28,9 +34,17 @@
 			</tr>
 			<tr>
 				<td></td>
+				<td>31+</td>
+				<td>8+</td>
+				<td>36+</td>
+				<td>21+</td>
+			</tr>
+			<tr class="odd">
 				<td></td>
-				<td></td>
-				<td></td>
+				<td>31+</td>
+				<td>8+</td>
+				<td>36+</td>
+				<td>21+</td>
 			</tr>
 		</table>
 	</div>

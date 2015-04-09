@@ -1,0 +1,46 @@
+.browser-table{
+	border-collapse: collapse;
+  	width: 100%;
+  	border-left: 4px solid #8AC007;
+  	color: #657b83;
+  	font-family: 'Consolas', monospace;
+}
+.browser-table td {
+	border: 1px solid #d4d4d4;
+	text-align: center;
+	padding: 5px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	vertical-align: top;
+}
+.browser-table .odd td{
+	background-color: #faf6ec;
+}
+.browser-table .thead th{
+	background-color: #f2f2f2;
+}
+.browser-table th {
+	width: 20%;
+	height: 32px;
+	border: 1px solid #d4d4d4;
+	font-weight: normal;
+	font-size: 1.2em;
+	padding: 11px 5px 11px 5px;
+	vertical-align: middle;
+}
+.browser-table .bsChrome,.browser-table .bsIE,.browser-table .bsFirefox,.browser-table .bsSafari{
+	background : #f2f2f2 url(../../static/img/browser-icon.png) no-repeat;
+}
+
+.browser-table .bsChrome{
+	background-position: center -96px;
+}
+.browser-table .bsIE{
+	background-position: center -46px;
+}
+.browser-table .bsFirefox{
+	background-position: center 5px;
+}
+.browser-table .bsSafari{
+	background-position: center -148px;
+}
