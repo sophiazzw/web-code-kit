@@ -1,0 +1,18 @@
+{
+	"title": "js 数据模拟",
+	"browsers" : [
+		{
+			"property" : "animation",
+			"bsIE" : "IE8+",
+			"bsChrome" : "31+",
+			"bsFirefox" : "36+",
+			"bsSafari" : "13+"
+		},{
+			"property" : "transform",
+			"bsIE" : "IE8+",
+			"bsChrome" : "31+",
+			"bsFirefox" : "36+",
+			"bsSafari" : "13+"
+		}
+	]
+}
