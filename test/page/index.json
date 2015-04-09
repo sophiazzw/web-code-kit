@@ -14,5 +14,17 @@
 			"bsFirefox" : "36+",
 			"bsSafari" : "13+"
 		}
-	]
+	],
+	"examples" : {
+		"mapareaCss" : {
+			"language" : "css",
+			"title" : "CSS",
+			"content" : "img.map, map area&nbsp;{&#10;&nbsp;&nbsp;outline: none;&nbsp;&#10;}"
+		},
+		"mapareaHtml" : {
+			"language" : "html",
+			"title" : "HTML",
+			"content" : "&lt;img class=&#34;map&#34; src=&#34;...&#34; usemap=&#34;...&#34; hidefocus=&#34;true&#34; /&gt;"
+		}
+	}
 }
