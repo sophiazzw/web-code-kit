@@ -1,6 +1,6 @@
 {
 	"title": "js 数据模拟",
-	"browsers" : [
+	"browsers" : [[
 		{
 			"property" : "animation",
 			"bsIE" : "IE8+",
@@ -14,17 +14,17 @@
 			"bsFirefox" : "36+",
 			"bsSafari" : "13+"
 		}
-	],
+	]],
 	"examples" : {
 		"mapareaCss" : {
 			"language" : "css",
 			"title" : "CSS",
-			"content" : "img.map, map area&nbsp;{&#10;&nbsp;&nbsp;outline: none;&nbsp;&#10;}"
+			"content" : "img.map, map area {&#10;  outline: none; &#10;}"
 		},
 		"mapareaHtml" : {
 			"language" : "html",
 			"title" : "HTML",
-			"content" : "&lt;img class=&#34;map&#34; src=&#34;...&#34; usemap=&#34;...&#34; hidefocus=&#34;true&#34; /&gt;"
+			"content" : "&lt;img&nbsp;class=&#34;map&#34;&nbsp;src=&#34;...&#34;&nbsp;usemap=&#34;...&#34;&nbsp;hidefocus=&#34;true&#34;/&gt;"
 		}
 	}
 }

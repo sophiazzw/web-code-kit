@@ -1,7 +1,7 @@
 #require('./example.css')
 #if($example)
 <div class="ex-wrap">
-	<h3 class="ex-title">${!example.title} :</h3>
-	<pre><code class="${!example.language}">${!example.content}</code></pre>
+	<h3 class="ex-title">$example.title :</h3>
+	<pre><code class="$example.language">$example.content</code></pre>
 </div>
 #end

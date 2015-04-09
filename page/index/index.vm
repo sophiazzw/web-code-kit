@@ -1,26 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<link rel="stylesheet" href="../../static/css/solarized_light.css">
-	<link rel="stylesheet" href="../../static/css/common.css">
-	<link rel="stylesheet" href="../../static/css/reset.css">
-</head>
-<body>
-	<!-- <p data-height="268" data-theme-id="0" data-slug-hash="ragYvB" data-default-tab="result" data-user="bookcasey" class='codepen'>See the Pen <a href='http://codepen.io/bookcasey/pen/ragYvB/'>ragYvB</a> by bookcasey (<a href='http://codepen.io/bookcasey'>@bookcasey</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
-	<p data-height="522" data-theme-id="0" data-slug-hash="GgaOQM" data-default-tab="result" data-user="valdean" class='codepen'>See the Pen <a href='http://codepen.io/valdean/pen/GgaOQM/'>Bouncy Text</a> by Val Klump (<a href='http://codepen.io/valdean'>@valdean</a>) on <a href='http://codepen.io'>CodePen</a>.</p> -->
-	
-	<div class="example">
-		<h3 class="ex-title">CSS :</h3>
-		<pre><code class="css">img.map, map area&nbsp;{&#10;&nbsp;&nbsp;outline: none;&nbsp;&#10;}</code></pre>
-	</div>
-	<div class="example">
-		<h3 class="ex-title">HTML :</h3>
-		<pre><code class="html">&lt;img class="map" src="..." usemap="..." hidefocus="true" /&gt;</code></pre>
-	</div>
-<script async src="../../static/js/ei.js"></script>
-<script src="../../static/js/highlight.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-</body>
-</html>
+#extends("/page/layout/front/front.vm")
+
+#block("content")
+	<p data-height="268" data-theme-id="0" data-slug-hash="ragYvB" data-default-tab="result" data-user="bookcasey" class='codepen'>See the Pen <a href='http://codepen.io/bookcasey/pen/ragYvB/'>ragYvB</a> by bookcasey (<a href='http://codepen.io/bookcasey'>@bookcasey</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+	<p data-height="522" data-theme-id="0" data-slug-hash="GgaOQM" data-default-tab="result" data-user="valdean" class='codepen'>See the Pen <a href='http://codepen.io/valdean/pen/GgaOQM/'>Bouncy Text</a> by Val Klump (<a href='http://codepen.io/valdean'>@valdean</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+	#if($examples)
+		#widget('/widget/example/example.vm','var:example=$examples.mapareaCss')
+		#widget('/widget/example/example.vm','var:example=$examples.mapareaHtml')
+	#end
+
+	#if($browsers)
+
+	#end
+#end
+#require('highlight');
+
+#script()
+	hljs.initHighlightingOnLoad();
+	require(['codepen']);
+#end
+
+#require("./index.vm")
+#end

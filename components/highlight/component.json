@@ -1,6 +1,6 @@
 {
-    "repos": "https://github.com/jquery/jquery.git",
+    "repos": "https://github.com/highlight/highlight.git",
     "version": "1.9.1",
-    "name": "jquery",
-    "main": "jquery.js"
+    "name": "highlight",
+    "main": "highlight.js"
 }
