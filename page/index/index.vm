@@ -11,6 +11,8 @@
 	#if($browsers)
 		#widget('/widget/browser/browser.vm','var:browsers=$browsers.get(0)')
 	#end
+
+	<input type="text" data-placeholder="this is a tip" id="aa" />
 #end
 #require('highlight');
 
@@ -18,8 +20,9 @@
 	hljs.initHighlightingOnLoad();
 	require(['codepen']);
 	require(['placeholder'],function(Placeholder){
-		var placeholder = new Placeholder();
-		console.log(placeholder);
+		var placeholder = new Placeholder({
+			dom : "#aa"
+		});
 	})
 #end
 
