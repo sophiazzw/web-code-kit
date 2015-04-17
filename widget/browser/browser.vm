@@ -9,12 +9,12 @@
 		<th class="bsSafari"></th>
 	</tr>
 	#foreach($browser in $browsers)
-	<tr>
-		<td>$browser.property</td>
-		<td>$browser.bsChrome</td>
-		<td>$browser.bsIE</td>
-		<td>$browser.bsFirefox</td>
-		<td>$browser.bsSafari</td>
+	<tr class="">
+		<td>!${browser.property}</td>
+		<td>!${browser.bsChrome}</td>
+		<td>!${browser.bsIE}</td>
+		<td>!${browser.bsFirefox}</td>
+		<td>!${browser.bsSafari}</td>
 	</tr>
 	#end
 </table>

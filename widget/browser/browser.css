@@ -16,9 +16,7 @@
 .browser-table .odd td{
 	background-color: #faf6ec;
 }
-.browser-table .thead th{
-	background-color: #f2f2f2;
-}
+
 .browser-table th {
 	width: 20%;
 	height: 32px;
@@ -29,18 +27,19 @@
 	vertical-align: middle;
 }
 .browser-table .bsChrome,.browser-table .bsIE,.browser-table .bsFirefox,.browser-table .bsSafari{
-	background : #f2f2f2 url(../../static/img/browser-icon.png) no-repeat;
+	background : #fff url(../../static/img/browser.jpg) no-repeat;
+	background-size: 47px auto ;
 }
 
 .browser-table .bsChrome{
-	background-position: center -96px;
+	background-position: center -93px;
 }
 .browser-table .bsIE{
-	background-position: center -46px;
+	background-position: center -45px;
 }
 .browser-table .bsFirefox{
-	background-position: center 5px;
+	background-position: center 2px;
 }
 .browser-table .bsSafari{
-	background-position: center -148px;
+	background-position: center -143px;
 }
