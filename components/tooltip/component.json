@@ -1,0 +1,6 @@
+{
+    "repos": "https://github.com/highlight/highlight.git",
+    "version": "1.9.1",
+    "name": "tooltip",
+    "main": "tooltip.js"
+}

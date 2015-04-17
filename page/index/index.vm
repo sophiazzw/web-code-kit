@@ -12,17 +12,17 @@
 		#widget('/widget/browser/browser.vm','var:browsers=$browsers.get(0)')
 	#end
 
-	<input type="text" data-placeholder="this is a tip" id="aa" />
+	<a href="javascript:;" id="tooltip" data-tooltip="aaaa">fdsf</a>
 #end
 #require('highlight');
 
 #script()
 	hljs.initHighlightingOnLoad();
 	require(['codepen']);
-	require(['placeholder'],function(Placeholder){
-		var placeholder = new Placeholder({
-			dom : "#aa"
-		});
+	require(['tooltip'],function(Tooltip){
+		var tooltip = new Tooltip({
+			dom : "#tooltip"
+		})
 	})
 #end
 
