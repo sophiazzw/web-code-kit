@@ -1,5 +1,4 @@
 var $ = Zepto = require('zepto');
-var proxy = $.proxy;
 
 + function() {
     function Tooltip(opt) {
@@ -24,55 +23,51 @@ var proxy = $.proxy;
         _this.tip = null;
         _this.isHide = true;
 
-        _this.createTip();
         _this.bindEvent();
+        _this.createTip();
     };
 
     Tooltip.prototype.bindEvent = function() {
-        var _this = this;
+        var _this = this,
+            opt = _this.options;
 
-        if(_this.options.hover){
-            _this.dom.bind('mouseenter',proxy(_this.show, _this))
-              .bind('mouseleave',proxy(_this.hide, _this));
+        if(opt.hover){
+            _this.dom.bind('mouseenter',function(){
+              _this.realdom = $(this);
+              _this.show();
+            }).bind('mouseleave',$.proxy(_this.hide, _this));
         }
         //ensures that the value of this in the original function refers to the context object
-        $(window).resize(proxy(_this.hide, _this));
+        $(window).resize($.proxy(_this.hide, _this));
     };
 
     Tooltip.prototype.createTip = function() {
         var _this = this,
-            opts = _this.options,
-            $dom = _this.dom,
-            content = opts.content;
+            opts = _this.options;
 
         _this.tip = $('<div class="ui-tooltip-wrap"><div class="ui-tooltip-content"></div><i class="ui-tooltip-arrow"></i></div>').addClass('ui-tooltip-theme-' + opts.theme);
-
-        opts.className && _this.tip.addClass(opts.className);
-
-        if (content == null) {
-            var attr = opts.contentAttr || 'title';
-
-            content = $dom.attr(attr) || '';
-            attr == 'title' && $dom.removeAttr('title');
-        }
-
-        _this.setContent(content);
+        opts.className && _this.tip.addClass(opts.className); 
+        
     };
 
     Tooltip.prototype.setContent = function(content) {
-        var _this = this;
-
+        var _this = this,
+            $dom = _this.realdom,
+            opts = _this.options;
+        if (content === undefined) {
+            var attr = opts.contentAttr || 'title';
+            attr == 'title' && $dom.removeAttr('title');
+            content = $dom.attr(attr) || '';
+        }
         _this.tip.find('.ui-tooltip-content').html(content);
-        _this.setPos();
+        _this.setPos(); //the width or height of content will change the tip's pos
     };
 
     Tooltip.prototype.show = function() {
         var _this = this;
-
         _this.isHide = false;
-        _this.tip.appendTo(document.body);
-        _this.setPos();
-        _this.tip.show();
+        _this.setContent();
+        _this.tip.appendTo(document.body).show();
     };
 
     Tooltip.prototype.hide = function() {
@@ -80,12 +75,6 @@ var proxy = $.proxy;
 
         _this.isHide = true;
         _this.tip.hide().remove();
-    };
-
-    Tooltip.prototype.toggle = function() {
-        var _this = this;
-
-        _this.isHide ? _this.show() : _this.hide();
     };
 
     Tooltip.prototype.setPos = function(pos) {
@@ -126,15 +115,17 @@ var proxy = $.proxy;
             offset = opts.offset,
             result = {},
             $tip = _this.tip,
-            $dom = _this.dom;
+            $dom = _this.realdom;
         var dOffset = $dom.offset(),
             dTop = dOffset.top,
             dLeft = dOffset.left,
-            dWidth = $dom.width(),
-            dHeight = $dom.height(),
+            dWidth = dOffset.width,
+            dHeight = dOffset.height,
             tWidth = $tip.width(),
             tHeight = $tip.height();
-
+        console.log(dOffset);
+        console.log(tWidth);
+        console.log(tHeight);      
         switch (pos) {
             case 'left':
                 result.left = dLeft - tWidth - offset + (center ? -Tooltip.ARROW_WIDTH : Tooltip.NOT_CENTER_OFFSET);
@@ -164,7 +155,7 @@ var proxy = $.proxy;
     };
 
     Tooltip.ARROW_WIDTH = 7;
-    Tooltip.NOT_CENTER_OFFSET = 25 + Tooltip.ARROW_WIDTH;
+    Tooltip.NOT_CENTER_OFFSET = Tooltip.ARROW_WIDTH;
 
     Tooltip.getPosName = function(pos) {
         return /^(?:left|bottom|right)$/.test(pos) ? pos : 'top';
