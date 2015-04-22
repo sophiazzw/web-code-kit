@@ -1,5 +1,5 @@
 #extends("/page/layout/front/front.vm")
-
+#require("./index.css")
 #block("content")
 	## <p data-height="268" data-theme-id="0" data-slug-hash="ragYvB" data-default-tab="result" data-user="bookcasey" class='codepen'>See the Pen <a href='http://codepen.io/bookcasey/pen/ragYvB/'>ragYvB</a> by bookcasey (<a href='http://codepen.io/bookcasey'>@bookcasey</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 	## <p data-height="522" data-theme-id="0" data-slug-hash="GgaOQM" data-default-tab="result" data-user="valdean" class='codepen'>See the Pen <a href='http://codepen.io/valdean/pen/GgaOQM/'>Bouncy Text</a> by Val Klump (<a href='http://codepen.io/valdean'>@valdean</a>) on <a href='http://codepen.io'>CodePen</a>.</p>

@@ -1,0 +1,6 @@
+.tooltip{
+	display: inline-block;
+	padding:13px 15px 14px 16px;
+	border: 9px solid #ddd;
+	background-color: red;
+}
