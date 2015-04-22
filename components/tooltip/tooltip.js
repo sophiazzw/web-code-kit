@@ -7,8 +7,8 @@ var $ = Zepto = require('zepto');
             content: null,
             contentAttr: 'data-tooltip',
             hover: true,
-            theme: 'orange',
-            pos: '',
+            theme: 'gray',
+            direction: '',
             offset: 0,
             className: ''
         }, opt || {});
@@ -38,7 +38,6 @@ var $ = Zepto = require('zepto');
             }).bind('mouseleave',$.proxy(_this.hide, _this));
         }
         //ensures that the value of this in the original function refers to the context object
-        $(window).resize($.proxy(_this.hide, _this));
     };
 
     Tooltip.prototype.createTip = function() {
@@ -47,7 +46,6 @@ var $ = Zepto = require('zepto');
 
         _this.tip = $('<div class="ui-tooltip-wrap"><div class="ui-tooltip-content"></div><i class="ui-tooltip-arrow"></i></div>').addClass('ui-tooltip-theme-' + opts.theme);
         opts.className && _this.tip.addClass(opts.className); 
-        
     };
 
     Tooltip.prototype.setContent = function(content) {
@@ -125,11 +123,11 @@ var $ = Zepto = require('zepto');
             tHeight = $tip.height();
         switch (pos) {
             case 'left':
-                result.left = dLeft - tWidth - offset + (center ? -Tooltip.ARROW_WIDTH : Tooltip.NOT_CENTER_OFFSET);
+                result.left = dLeft - tWidth - offset + (center ? -Tooltip.ARROW_WIDTH : Tooltip.ARROW_WIDTH);
                 break;
 
             case 'right':
-                result.left = dLeft + dWidth + offset + (center ? Tooltip.ARROW_WIDTH : -Tooltip.NOT_CENTER_OFFSET);
+                result.left = dLeft + dWidth + offset + (center ? Tooltip.ARROW_WIDTH : -Tooltip.ARROW_WIDTH);
                 break;
 
             case 'bottom':
@@ -151,8 +149,7 @@ var $ = Zepto = require('zepto');
         return result;
     };
 
-    Tooltip.ARROW_WIDTH = 7;
-    Tooltip.NOT_CENTER_OFFSET = Tooltip.ARROW_WIDTH;
+    Tooltip.ARROW_WIDTH = 5;
 
     Tooltip.getPosName = function(pos) {
         return /^(?:left|bottom|right)$/.test(pos) ? pos : 'top';

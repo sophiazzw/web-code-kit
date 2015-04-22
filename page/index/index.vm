@@ -22,7 +22,8 @@
 	hljs.initHighlightingOnLoad();
 	require(['tooltip','zepto'],function(Tooltip,$){
 		var tooltip = new Tooltip({
-			dom : ".tooltip"
+			dom : ".tooltip",
+			pos : "right"
 		});
 		console.log($('.tooltip1').width());
 	})
