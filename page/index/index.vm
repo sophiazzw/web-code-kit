@@ -14,16 +14,17 @@
 
 	<a href="javascript:;" class="tooltip" data-tooltip="aaaa">fdsf</a>
 	<a href="javascript:;" class="tooltip" data-tooltip="bbbb">sss</a>
-	<a href="javascript:;" class="tooltip" data-tooltip="vvvv">dd</a>
+	<a href="javascript:;" class="tooltip1" style="display:none" data-tooltip="vvvv">dd</a>
 #end
 #require('highlight');
 
 #script()
 	hljs.initHighlightingOnLoad();
-	require(['tooltip'],function(Tooltip){
+	require(['tooltip','zepto'],function(Tooltip,$){
 		var tooltip = new Tooltip({
 			dom : ".tooltip"
-		})
+		});
+		console.log($('.tooltip1').width());
 	})
 #end
 

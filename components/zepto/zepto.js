@@ -44,6 +44,11 @@ var Zepto = (function() {
       'frameborder': 'frameBorder',
       'contenteditable': 'contentEditable'
     },
+    posFix = {
+      'position': "absolute", 
+      'visibility': "visible", 
+      'display': "block" 
+    },
     isArray = Array.isArray ||
       function(object){ return object instanceof Array }
 
@@ -804,10 +809,15 @@ var Zepto = (function() {
       dimension.replace(/./, function(m){ return m[0].toUpperCase() })
 
     $.fn[dimension] = function(value){
-      var offset, el = this[0]
-      if (value === undefined) return isWindow(el) ? el['inner' + dimensionProperty] :
+      var offset, el = this[0], result ,$el = $(this);
+      if (value === undefined){
+        $el.css(posFix);
+        result = isWindow(el) ? el['inner' + dimensionProperty] :
         isDocument(el) ? el.documentElement['scroll' + dimensionProperty] :
-        (offset = this.offset()) && offset[dimension]
+        (offset = this.offset()) && offset[dimension];
+        $el.css({'position':'','display':'','visibility':''});  // to fix width and height while display none ;
+        return result;
+      } 
       else return this.each(function(idx){
         el = $(this)
         el.css(dimension, funcArg(this, value, idx, el[dimension]()))

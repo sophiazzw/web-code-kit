@@ -59,7 +59,7 @@ var $ = Zepto = require('zepto');
             attr == 'title' && $dom.removeAttr('title');
             content = $dom.attr(attr) || '';
         }
-        _this.tip.find('.ui-tooltip-content').html(content);
+        _this.tip.appendTo(document.body).find('.ui-tooltip-content').html(content); //put $tip into dom to calculate width and height
         _this.setPos(); //the width or height of content will change the tip's pos
     };
 
@@ -67,7 +67,7 @@ var $ = Zepto = require('zepto');
         var _this = this;
         _this.isHide = false;
         _this.setContent();
-        _this.tip.appendTo(document.body).show();
+        _this.tip.show();
     };
 
     Tooltip.prototype.hide = function() {
@@ -123,9 +123,6 @@ var $ = Zepto = require('zepto');
             dHeight = dOffset.height,
             tWidth = $tip.width(),
             tHeight = $tip.height();
-        console.log(dOffset);
-        console.log(tWidth);
-        console.log(tHeight);      
         switch (pos) {
             case 'left':
                 result.left = dLeft - tWidth - offset + (center ? -Tooltip.ARROW_WIDTH : Tooltip.NOT_CENTER_OFFSET);
