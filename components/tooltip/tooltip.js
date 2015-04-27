@@ -8,7 +8,7 @@ var $ = Zepto = require('zepto');
             contentAttr: 'data-tooltip',
             hover: true,
             theme: 'gray',
-            direction: '',
+            pos: '',
             offset: 0,
             className: ''
         }, opt || {});
@@ -70,18 +70,22 @@ var $ = Zepto = require('zepto');
 
     Tooltip.prototype.hide = function() {
         var _this = this;
-
         _this.isHide = true;
         _this.tip.hide().remove();
     };
 
     Tooltip.prototype.setPos = function(pos) {
         var _this = this;
-        var pos = (pos || _this.options.pos).split(/\s+|-/),
-            pos1 = pos[0],
-            pos2 = pos[1],
+        var pos = pos || _this.options.pos,
             result, className;
+        if(_this.checkArg(pos)){
+            
+        }
+        if(pos.length == 1){
+          result = _this.getPos(pos,true);
+        }else if(pos.length == 2){
 
+        }    
         if (!pos2 || pos1 && pos2 == 'center') {
             /*
             left -> left center
@@ -120,39 +124,35 @@ var $ = Zepto = require('zepto');
             dWidth = dOffset.width,
             dHeight = dOffset.height,
             tWidth = $tip.width(),
-            tHeight = $tip.height();
+            tHeight = $tip.height(),
+            doffset = offset + Tooltip.ARROW_WIDTH;
         switch (pos) {
-            case 'left':
-                result.left = dLeft - tWidth - offset + (center ? -Tooltip.ARROW_WIDTH : Tooltip.ARROW_WIDTH);
+            case 'w':
+                result.left = dLeft - tWidth - doffset;
+                result.top = dTop + dHeight / 2 - tHeight / 2;
                 break;
 
-            case 'right':
-                result.left = dLeft + dWidth + offset + (center ? Tooltip.ARROW_WIDTH : -Tooltip.ARROW_WIDTH);
+            case 'e':
+                result.left = dLeft + dWidth + doffset;
+                result.top = dTop + dHeight / 2 - tHeight / 2;
                 break;
 
-            case 'bottom':
-                result.top = dTop + dHeight + offset + Tooltip.ARROW_WIDTH;
+            case 'n':
+                result.top = dTop + dHeight + doffset;
+                result.left = dLeft + dWidth / 2 - tWidth / 2;
                 break;
 
             default:
-                result.top = dTop - tHeight - offset - Tooltip.ARROW_WIDTH;
-        };
-
-        if (center) {
-            if (pos == 'left' || pos == 'right') {
-                result.top = dTop + dHeight / 2 - tHeight / 2;
-            } else {
+                result.top = dTop - tHeight - doffset;
                 result.left = dLeft + dWidth / 2 - tWidth / 2;
-            }
-        }
-
+        };
         return result;
     };
 
     Tooltip.ARROW_WIDTH = 5;
 
-    Tooltip.getPosName = function(pos) {
-        return /^(?:left|bottom|right)$/.test(pos) ? pos : 'top';
+    Tooltip.checkArg = function(pos) {
+        return /^((n|s)?(w|e)?)|((w|e)?(n|s)?)$/.test(pos);
     };
 
     module.exports = Tooltip;
