@@ -20,6 +20,11 @@
 	<a href="javascript:;" class="tooltip5" data-tooltip="qwereqwrwqerqwerqwer">nw</a>
 	<a href="javascript:;" class="tooltip6" data-tooltip="qwereqwrwqerqwerqwer">se</a>
 	<a href="javascript:;" class="tooltip7" data-tooltip="qwereqwrwqerqwerqwer">sw</a>
+	<a href="javascript:;" class="tooltip8" data-tooltip="qwereqwrwqerqwerqwer">sw</a>
+
+	<input id="re" type="numbers" max="10" min="1" step="1" value="3"/>
+	<input id="re1" type="numbers" max="10" min="1" step="1" value="5"/>
+
 #end
 #require('highlight');
 
@@ -58,8 +63,22 @@
 			dom : ".tooltip7",
 			pos : "sw"
 		});
-		console.log($('.tooltip1').width());
+
+		var tooltip8 = new Tooltip({
+			dom : ".tooltip8",
+			pos : "ew"
+		});
 	})
+	require(['zepto'],function(){
+		require(['components/input/number/number'],function(InputNumber){
+			var inputnumber = new InputNumber({
+				dom : "#re"
+			});
+			var inputnumber1 = new InputNumber({
+				dom : "#re1"
+			});
+		})
+	});
 #end
 
 #require("./index.vm")
