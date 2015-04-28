@@ -77,41 +77,16 @@ var $ = Zepto = require('zepto');
     Tooltip.prototype.setPos = function(pos) {
         var _this = this;
         var pos = pos || _this.options.pos,
-            result, className;
-        if(_this.checkArg(pos)){
-            
+            result;
+        if(Tooltip.checkArg(pos)){
+            result = _this.getPos(pos)
+        }else{
+            throw 'argument invalid'
         }
-        if(pos.length == 1){
-          result = _this.getPos(pos,true);
-        }else if(pos.length == 2){
-
-        }    
-        if (!pos2 || pos1 && pos2 == 'center') {
-            /*
-            left -> left center
-            top -> top center
-            left center -> left center
-            center-center -> top center
-            */
-            result = _this.getPos(className = Tooltip.getPosName(pos1), true);
-        } else if (pos1 == 'center') {
-            /*
-            center right -> right center
-            center -> top center
-            */
-            result = _this.getPos(className = Tooltip.getPosName(pos2), true);
-        } else {
-            pos1 = Tooltip.getPosName(pos1);
-            pos2 = Tooltip.getPosName(pos2);
-            className = pos1 + '-' + pos2;
-
-            result = $.extend(_this.getPos(pos1), _this.getPos(pos2));
-        }
-
-        _this.tip.css(result).addClass('ui-tooltip-' + className);
+        _this.tip.css(result).addClass('ui-tooltip-' + pos);
     };
 
-    Tooltip.prototype.getPos = function(pos, center) {
+    Tooltip.prototype.getPos = function(pos) {
         var _this = this,
             opts = _this.options,
             offset = opts.offset,
@@ -126,7 +101,7 @@ var $ = Zepto = require('zepto');
             tWidth = $tip.width(),
             tHeight = $tip.height(),
             doffset = offset + Tooltip.ARROW_WIDTH;
-        switch (pos) {
+        switch (pos.charAt(0)) {
             case 'w':
                 result.left = dLeft - tWidth - doffset;
                 result.top = dTop + dHeight / 2 - tHeight / 2;
@@ -137,7 +112,7 @@ var $ = Zepto = require('zepto');
                 result.top = dTop + dHeight / 2 - tHeight / 2;
                 break;
 
-            case 'n':
+            case 's':
                 result.top = dTop + dHeight + doffset;
                 result.left = dLeft + dWidth / 2 - tWidth / 2;
                 break;
@@ -146,13 +121,22 @@ var $ = Zepto = require('zepto');
                 result.top = dTop - tHeight - doffset;
                 result.left = dLeft + dWidth / 2 - tWidth / 2;
         };
+
+        if(pos.length == 2){
+            if(pos.charAt(1) == 'e'){
+                result.left = dLeft + dWidth / 2 - Tooltip.ARROW_WIDTH * 2;
+            }else{
+                result.left = dLeft + dWidth / 2 - tWidth + Tooltip.ARROW_WIDTH * 2;
+            }
+        }
+
         return result;
     };
 
     Tooltip.ARROW_WIDTH = 5;
 
     Tooltip.checkArg = function(pos) {
-        return /^((n|s)?(w|e)?)|((w|e)?(n|s)?)$/.test(pos);
+        return /^(n|s)?(w|e)?$/.test(pos); // nw | n | ne | w | e | sw | s | se
     };
 
     module.exports = Tooltip;

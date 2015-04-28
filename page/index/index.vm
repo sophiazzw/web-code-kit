@@ -12,9 +12,14 @@
 		#widget('/widget/browser/browser.vm','var:browsers=$browsers.get(0)')
 	#end
 
-	<a href="javascript:;" class="tooltip" data-tooltip="aaaa">fdsf</a>
-	<a href="javascript:;" class="tooltip" data-tooltip="bbbb">sss</a>
-	<a href="javascript:;" class="tooltip1" style="display:none" data-tooltip="vvvv">dd</a>
+	<a href="javascript:;" class="tooltip" data-tooltip="aaaa">e</a>
+	<a href="javascript:;" class="tooltip1" data-tooltip="bbbb">w</a>
+	<a href="javascript:;" class="tooltip2" data-tooltip="qwereqwrwqerqwerqwer">n</a>
+	<a href="javascript:;" class="tooltip3" data-tooltip="qwereqwrwqerqwerqwer">s</a>
+	<a href="javascript:;" class="tooltip4" data-tooltip="qwereqwrwqerqwerqwer">ne</a>
+	<a href="javascript:;" class="tooltip5" data-tooltip="qwereqwrwqerqwerqwer">nw</a>
+	<a href="javascript:;" class="tooltip6" data-tooltip="qwereqwrwqerqwerqwer">se</a>
+	<a href="javascript:;" class="tooltip7" data-tooltip="qwereqwrwqerqwerqwer">sw</a>
 #end
 #require('highlight');
 
@@ -23,7 +28,35 @@
 	require(['tooltip','zepto'],function(Tooltip,$){
 		var tooltip = new Tooltip({
 			dom : ".tooltip",
-			pos : "right"
+			pos : "e"
+		});
+		var tooltip1 = new Tooltip({
+			dom : ".tooltip1",
+			pos : "w"
+		});
+		var tooltip2 = new Tooltip({
+			dom : ".tooltip2",
+			pos : "n"
+		});
+		var tooltip3 = new Tooltip({
+			dom : ".tooltip3",
+			pos : "s"
+		});
+		var tooltip4 = new Tooltip({
+			dom : ".tooltip4",
+			pos : "ne"
+		});
+		var tooltip5 = new Tooltip({
+			dom : ".tooltip5",
+			pos : "nw"
+		});
+		var tooltip6 = new Tooltip({
+			dom : ".tooltip6",
+			pos : "se"
+		});
+		var tooltip7 = new Tooltip({
+			dom : ".tooltip7",
+			pos : "sw"
 		});
 		console.log($('.tooltip1').width());
 	})
